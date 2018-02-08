@@ -11,16 +11,16 @@ public class AddressBookController {
     BuddyInfoRepository buddyInfoRepository;
 
     @RequestMapping(value = "/addBuddyInfo")
-    public void addBuddyInfo(@RequestParam(value="id", required=false) Long id, @RequestParam(value="phoneNumber", required=false) String phoneNumber){
-        AddressBook book = addressBookRepository.findOne(id);
-        BuddyInfo buddyToAdd = buddyInfoRepository.findOne(phoneNumber);
+    public void addBuddyInfo(@RequestParam(value="bookId") Long bookId, @RequestParam(value="buddyId") Long buddyId){
+        AddressBook book = addressBookRepository.findOne(bookId);
+        BuddyInfo buddyToAdd = buddyInfoRepository.findOne(buddyId);
         book.addBuddy(buddyToAdd);
         addressBookRepository.save(book);
     }
     @RequestMapping(value = "/removeBuddyInfo")
-    public void removeBuddyInfo(@RequestParam(value="id", required=false) Long id, @RequestParam(value="phoneNumber", required=false) String phoneNumber){
-        AddressBook book = addressBookRepository.findOne(id);
-        BuddyInfo buddyToRemove = buddyInfoRepository.findOne(phoneNumber);
+    public void removeBuddyInfo(@RequestParam(value="bookId") Long bookId, @RequestParam(value="buddyId") Long buddyId){
+        AddressBook book = addressBookRepository.findOne(bookId);
+        BuddyInfo buddyToRemove = buddyInfoRepository.findOne(buddyId);
         book.removeBuddy(buddyToRemove);
         addressBookRepository.save(book);
     }
@@ -28,9 +28,9 @@ public class AddressBookController {
     public Iterable<AddressBook> getAllBooks(){
         return addressBookRepository.findAll();
     }
-    @RequestMapping(value = "createBook")
-    public AddressBook createBook(){
-        AddressBook book = new AddressBook();
-        return addressBookRepository.save(book);
+
+    @RequestMapping("/createBook")
+    public void createBook(){
+        addressBookRepository.save(new AddressBook());
     }
 }

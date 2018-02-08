@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class BuddyInfoController {
     @Autowired
@@ -14,8 +16,8 @@ public class BuddyInfoController {
         return buddyRepo.findAll();
     }
     @RequestMapping("/deleteBuddy")
-    public void deleteBuddy(@RequestParam(value="name", required=false) String name, @RequestParam(value="phoneNumber", required=false) String phoneNumber){
-        BuddyInfo b = buddyRepo.findOne(phoneNumber);
-        buddyRepo.delete(b);
+    public void deleteBuddy( @RequestParam(value="id", required=false) Long id){
+        BuddyInfo buddy = buddyRepo.findOne(id);
+        buddyRepo.delete(buddy);
     }
 }
