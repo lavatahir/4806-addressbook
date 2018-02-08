@@ -30,4 +30,8 @@ public class BuddyInfoControllerTest {
         BuddyInfo returns = this.restTemplate.postForObject(uri, b, BuddyInfo.class);
         assertEquals(b, returns);
     }
+
+    @Test
+    public void removeBuddyTest() throws Exception {
+    }
 }
