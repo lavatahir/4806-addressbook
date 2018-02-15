@@ -18,32 +18,6 @@ public class SpringBootApp {
     @Bean
     public CommandLineRunner demo(BuddyInfoRepository repo){
         return (args) -> {
-            repo.save(new BuddyInfo("Lava", "613-555-5555"));
-            repo.save(new BuddyInfo("Boo", "613-555-5554"));
-            repo.save(new BuddyInfo("Bob", "613-555-5553"));
-            repo.save(new BuddyInfo("Bill", "613-555-5552"));
-
-            /*
-
-            log.info("BuddyInfo found with findAll():");
-            log.info("------------------------------");
-            for(BuddyInfo b : repo.findAll()){
-                log.info(b.toString());
-            }
-            log.info("------------------------------");
-            BuddyInfo b1 = repo.findOne("613-555-5554");
-            log.info("Buddy found with findOne('613-555-5554'):");
-            log.info("------------------------------");
-            log.info(b1.toString());
-            log.info("------------------------------");
-
-            log.info("Buddy found with findByName('Lava')");
-            log.info("------------------------------");
-            for(BuddyInfo b : repo.findByName("Lava")){
-                log.info(b.toString());
-            }
-            log.info("------------------------------");
-            */
         };
     }
 }

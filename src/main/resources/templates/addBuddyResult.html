@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Buddies</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Result</h1>
+    <p th:text="'Name: ' + ${buddyInfo.name}" />
+    <p th:text="'Phone Number: ' + ${buddyInfo.phoneNumber}" />
+    <a href="/book">Create Another Buddy</a>
+</body>
+</html>
